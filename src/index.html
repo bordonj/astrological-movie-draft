@@ -30,21 +30,37 @@
         Our app uses the latest technology that matches possible interests you'd have, given your zodiac sign. If you could please input your zodiac sign, we will calculate your top matches!
       </p>
       <form id='zodiac'>
-        <label for="zodiacInput">Your Zodiac Sign:</label>
-        <input id='zodiacInput'  class='form-control' type="text" required>
-        <button type='submit'>GRAB MY INTERESTS</button>
+        <select class="custom-select" id="zodiacSelect" required>
+          <option value="" disabled selected>Choose one please</option>
+          <option value="Aquarius">Aquarius: January 20 - February 18</option>
+          <option value="Pisces">Pisces: February 19 - March 20</option>
+          <option value="Aries">Aries: March 21 - April 19</option>
+          <option value="Taurus">Taurus: April 20 - May 20</option>
+          <option value="Gemini">Gemini: May 21 - June 20</option>
+          <option value="Cancer">Cancer: June 21 - July 22</option>
+          <option value="Leo">Leo: July 23 - August 22</option>
+          <option value="Virgo">Virgo: August 23 - September 22</option>
+          <option value="Libra">Libra: September 23 - October 22</option>
+          <option value="Scorpio">Scorpio: October 23 - November 21</option>
+          <option value="Sagittarius">Sagittarius: November 22 - December 21</option>
+          <option value="Capricorn">Capricorn: December 22 - January 19</option>
+        </select>
+            <button type='submit'>GRAB MY INTERESTS</button>
       </form>
     </div>
 
     <div class='results'>
       <h1>--Zodiac Table--</h1>
-      <p>Description: <span id="description"></span></p>
-      <p>Date range: <span id="date"></span></p>
-      <p>Your zodiac color is: <span id="color"></span></p>
-      <p>Your zodiac compatability is: <span id="compatability"></span></p>
-      <p>Your lucky time is: <span id="time"></span></p>
-      <p>Your lucky number is: <span id="number"></span></p>
-      <p>Mood: <span id="mood"></span></p>
+      <div class='zodiacResults'>
+        <p>Description: <span id="description"></span></p>
+        <p>Date range: <span id="date"></span></p>
+        <p>Your zodiac color is: <span id="color"></span></p>
+        <p>Your zodiac compatability is: <span id="compatability"></span></p>
+        <p>Your lucky time is: <span id="time"></span></p>
+        <p>Your lucky number is: <span id="number"></span></p>
+        <p>Mood: <span id="mood"></span></p>
+      </div>
+
 
       <h1>--Potential matches--</h1>
       <p>
