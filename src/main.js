@@ -3,6 +3,14 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 // import { Project } from 'js/project';
+let createImg = (sign) => {
+  let imgElement = document.createElement('img');
+  imgElement.src=`https://www.astrology-zodiac-signs.com/images/${sign}.jpg`;
+  // imgElement.src=`/assets/images/${sign}.jpeg`;
+  imgElement.id=`sign${sign}`;
+  imgElement.style='float: right; border-radius: 300px; width: 150px';
+  return imgElement;
+};
 
 $(document).ready(function() {
   $('.start').on('click', () => {
@@ -12,9 +20,11 @@ $(document).ready(function() {
   });
   $('.form').on('submit', (e) => {
     e.preventDefault();
-    let zodiacInput = $('#zodiacInput').val();
-    console.log('zodiac input', zodiacInput);
+    let zodiacSelect = $('#zodiacSelect').val();
+    console.log('zodiac input', zodiacSelect);
     $('.form').hide();
+    let img = createImg(zodiacSelect.toLowerCase());
+    $('.zodiacResults').prepend(img);
     $('.results').fadeIn();
   });
 });

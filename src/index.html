@@ -30,7 +30,7 @@
         Our app uses the latest technology that matches possible interests you'd have, given your zodiac sign. If you could please input your zodiac sign, we will calculate your top matches!
       </p>
       <form id='zodiac'>
-        <select class="custom-select" id="zodiac" required>
+        <select class="custom-select" id="zodiacSelect" required>
           <option value="" disabled selected>Choose one please</option>
           <option value="Aquarius">Aquarius: January 20 - February 18</option>
           <option value="Pisces">Pisces: February 19 - March 20</option>
@@ -51,13 +51,16 @@
 
     <div class='results'>
       <h1>--Zodiac Table--</h1>
-      <p>Description: <span id="description"></span></p>
-      <p>Date range: <span id="date"></span></p>
-      <p>Your zodiac color is: <span id="color"></span></p>
-      <p>Your zodiac compatability is: <span id="compatability"></span></p>
-      <p>Your lucky time is: <span id="time"></span></p>
-      <p>Your lucky number is: <span id="number"></span></p>
-      <p>Mood: <span id="mood"></span></p>
+      <div class='zodiacResults'>
+        <p>Description: <span id="description"></span></p>
+        <p>Date range: <span id="date"></span></p>
+        <p>Your zodiac color is: <span id="color"></span></p>
+        <p>Your zodiac compatability is: <span id="compatability"></span></p>
+        <p>Your lucky time is: <span id="time"></span></p>
+        <p>Your lucky number is: <span id="number"></span></p>
+        <p>Mood: <span id="mood"></span></p>
+      </div>
+
 
       <h1>--Potential matches--</h1>
       <p>
