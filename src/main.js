@@ -1,35 +1,81 @@
-// import $ from 'jquery';
+import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-//import './js/astrology-service.js';
-import Zodiac from './js/astrology-service';
-import Movie from './js/movie-service';
 
-let response = Zodiac.fetchData("Virgo");
-console.log("for zodiac", response);
 
-let response1 = Movie.fetchData("Red");
-console.log("for Movie", response1);
-// //WIP code below is functionality for the service js files
+
+// import { Project } from 'js/project';
+
+$(document).ready(function() {
+  $('.start').on('click', () => {
+    $('.jumbotron').hide();
+    $('.form').fadeIn();
+    $('.start').hide();
+  });
+  $('.form').on('submit', (e) => {
+    e.preventDefault();
+    let zodiacInput = $('#zodiacInput').val();
+    console.log('zodiac input', zodiacInput);
+    $('.form').hide();
+    $('.results').fadeIn();
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//WIP code below is functionality for the service js files
 // console.log('aztro key', process.env.API_KEY);
-// var axios = require("axios").default;
+var axios = require("axios").default;
 
-// var options = {
-//   method: 'POST',
-//   url: 'https://sameer-kumar-aztro-v1.p.rapidapi.com/',
-//   params: {sign: 'cancer', day: 'today'},
-//   headers: {
-//     'x-rapidapi-key': `${process.env.API_KEY}`,
-//     'x-rapidapi-host': 'sameer-kumar-aztro-v1.p.rapidapi.com'
-//   }
-// };
+var options = {
+  method: 'POST',
+  url: 'https://sameer-kumar-aztro-v1.p.rapidapi.com/',
+  params: {sign: 'cancer', day: 'today'},
+  headers: {
+    'x-rapidapi-key': `${process.env.API_KEY}`,
+    'x-rapidapi-host': 'sameer-kumar-aztro-v1.p.rapidapi.com'
+  }
+};
 
-// axios.request(options).then(function (response) {
-// 	console.log('zodiac', response.data);
-// }).catch(function(error) {
-// 	console.error(error);
-// });
+axios.request(options).then(function (response) {
+  console.log('zodiac', response.data);
+}).catch(function(error) {
+  console.error(error);
+});
 
 
 // //powerful query
