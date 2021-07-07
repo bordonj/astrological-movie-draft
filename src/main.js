@@ -4,9 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Zodiac from './js/astrology-service';
 import Movie from './js/movie-service';
-// import axios from 'axios';
 
-// import { Project } from 'js/project';
+
+
+
 let createImg = (sign) => {
   let imgElement = document.createElement('img');
   imgElement.src=`https://www.astrology-zodiac-signs.com/images/${sign}.jpg`;
@@ -22,10 +23,27 @@ let createImg = (sign) => {
 let showMovies = (data) => {
   $('.movieResults').val('');
   console.log('in showMovies, data', data);
-  data.data.d.forEach((movie) => {
-    if (!movie.y) {
+  for (let movie of data.data.d) {
+    console.log('movie', movie);
+    if (!movie.i) {
+      const {l, s, rank} = movie;
+      const movieEl = document.createElement('div');
+      movieEl.classList.add('movie');
+      movieEl.innerHTML = `
+      <img src="https://avatars.githubusercontent.com/u/16786985?v=4" alt="${l}">
+      <div class="movie-info">
+        <h6>${l}</h6>
+        <span class="green">${rank}</span>
+      </div>
+      <div class="overview">
+        <h3>Overview</h3>
+        <p>People: <span id='people'>${s}</span></p>
+        <p>Type: <span id='type'>Actor<span></p>
+      </div>
+      `;
+      $('.movieResults').append(movieEl);
+    } else if (!movie.y) {
       const img = movie.i.imageUrl;
-      console.log('img', img);
       const {l, s, rank} = movie;
       
       const movieEl = document.createElement('div');
@@ -45,9 +63,7 @@ let showMovies = (data) => {
       $('.movieResults').append(movieEl);
     } else {
       const img = movie.i.imageUrl;
-      console.log('img', img);
       const {l, y, s, q} = movie;
-      
       const movieEl = document.createElement('div');
       movieEl.classList.add('movie');
       movieEl.innerHTML = `
@@ -64,8 +80,22 @@ let showMovies = (data) => {
       `;
       $('.movieResults').append(movieEl);
     }
-  });
+  }
+
 };
+
+async function getColorCompatMood(color, compatibility, mood) {
+  const apiColor = await Movie.fetchData(color);
+  const apiCompat = await Movie.fetchData(compatibility);
+  const apiMood = await Movie.fetchData(mood);
+  let results = await Promise.all([apiColor,apiCompat, apiMood]);
+  console.log('results', results);
+
+  for (let promise of results) {
+    console.log('getColorCompatMood', promise);
+    showMovies(promise);
+  }
+}
 
 $(document).ready(function() {
   $('.start').on('click', () => {
@@ -94,18 +124,20 @@ $(document).ready(function() {
         $('#number').text(luckyNum);
         $('#time').text(luckyTime);
         $('#mood').text(mood);
-        return Movie.fetchData(mood);
-      })
-      .then(res => {
-        if (res instanceof Error) {
-          throw Error(`Movie API error: ${res.message}`);
-        }
-        console.log('movie api res', res);
-        showMovies(res);
-      })
-      .catch(err => {
-        console.log('in catch', err);
+        let movieParams = getColorCompatMood(color, compatibility, mood);
+        console.log('movie params', movieParams);
+        // return Movie.fetchData(mood);
       });
+    // .then(res => {
+    //   if (res instanceof Error) {
+    //     throw Error(`Movie API error: ${res.message}`);
+    //   }
+    //   console.log('movie api res', res);
+    //   showMovies(res);
+    // })
+    // .catch(err => {
+    //   console.log('in catch', err);
+    // });
     $('.form').hide();
     let img = createImg(zodiacSelect.toLowerCase());
     $('.zodiacResults').prepend(img);
