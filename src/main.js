@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-
+import Zodiac from './js/astrology-service';
 
 
 // import { Project } from 'js/project';
@@ -25,6 +25,31 @@ $(document).ready(function() {
     e.preventDefault();
     let zodiacSelect = $('#zodiacSelect').val();
     console.log('zodiac input', zodiacSelect);
+    Zodiac.fetchData(zodiacSelect)
+      .then(res => {
+        if (res instanceof Error) {
+          throw Error (`Zodiac API error: ${res.message}`);
+        }
+        const color = res.color;
+        const compatibility = res.compatibility;
+        const description = res.description;
+        const luckyNum = res.lucky_number;
+        const luckyTime = res.lucky_time;
+        const mood = res.mood;
+        $('#color').text(color);
+        $('#compatibility').text(compatibility);
+        $('#description').text(description);
+        $('#number').text(luckyNum);
+        $('#time').text(luckyTime);
+        $('#mood').text(mood);
+        console.log('response from Zodiac.fetchData', res);
+        console.log('color', color);
+        console.log('compatibility', compatibility);
+        console.log('description', description);
+        console.log('luckyNum', luckyNum);
+        console.log('luckyTime', luckyTime);
+        console.log('mood', mood);
+      });
     $('.form').hide();
     let img = createImg(zodiacSelect.toLowerCase());
     $('.zodiacResults').prepend(img);

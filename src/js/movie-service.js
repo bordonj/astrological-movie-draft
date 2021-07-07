@@ -8,7 +8,7 @@ export default class Movie {
       url: 'https://imdb8.p.rapidapi.com/auto-complete',
       params: {q: `${Color}`},
       headers: {
-        'x-rapidapi-key': `${process.env.MOVIE_API_KEY}`,
+        'x-rapidapi-key': `${process.env.API_KEY}`,
         'x-rapidapi-host': 'imdb8.p.rapidapi.com'
       }
     };

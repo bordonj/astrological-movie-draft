@@ -38,6 +38,9 @@ select {
   text-align: center;
   font-family: 'Zen Tokyo Zoo', cursive;
 }
+.welcome {
+  color: #d470f0;
+}
 .start {
   text-align: center;
   font-size: 50px;
@@ -52,6 +55,12 @@ select {
   font-family: 'Zen Tokyo Zoo', cursive;
   cursor: pointer;
 
+}
+.results p {
+  color: #d281e8;
+}
+span {
+  color: white;
 }
 
 .start:hover {
