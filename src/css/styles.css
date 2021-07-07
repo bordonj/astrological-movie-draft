@@ -2,9 +2,15 @@
 body {
   background-image: url(https://media-cldnry.s-nbcnews.com/image/upload/newscms/2019_51/3151931/191217-astrology-gets-a-bad-rap-main-kh-3151931.jpg);
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: larger;
+  font-weight: bold;
+  /* position: fixed; */
 }
 .jumbotron, .results {
-  background-color: rgba(0, 0, 0, 0.729);
+  background-color: rgba(0, 0, 0, 0.838);
   min-width: 600px;
   max-width: 1100px;
   color: white;
@@ -25,14 +31,16 @@ body {
   min-width: 600px;
   margin: auto;
   margin-top: 5%;
-  background-color: rgba(255, 255, 255, 0.818);
+  background-color: rgba(255, 255, 255, 0.921);
   padding: 5%;
   display: none;
   border-radius: 5px;
   box-shadow: 3px 3px #dac146;
 }
-select {
+select, option, #zodiacSelect {
   margin-bottom: 5%;
+  background-color: rgb(70, 70, 70);
+  color: white;
 }
 
 .movieResults {
@@ -248,4 +256,29 @@ button:hover::after {
     clip-path: var(--slice-1);
     transform: translate(0);
   }
+}
+
+blockquote {
+  font-size: 30px;
+  font-style: italic;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: .5em 10px;
+  padding: 0 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  padding: 10px 20px;
+  line-height: 1.4;
+  border-radius: 100px;
+}
+
+blockquote:before {
+  content: open-quote;
+  display: inline;
+  height: 0;
+  line-height: 0;
+  left: -10px;
+  position: relative;
+  top: 30px;
+  color: #ccc;
+  font-size: 3em;
 }

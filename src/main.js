@@ -43,24 +43,46 @@ let showMovies = (data) => {
       `;
       $('.movieResults').append(movieEl);
     } else if (!movie.y) {
-      const img = movie.i.imageUrl;
-      const {l, s, rank} = movie;
-      
-      const movieEl = document.createElement('div');
-      movieEl.classList.add('movie');
-      movieEl.innerHTML = `
-      <img src="${img}" alt="${l}">
-      <div class="movie-info">
-        <h6>${l}</h6>
-        <span class="green">${rank}</span>
-      </div>
-      <div class="overview">
-        <h3>Overview</h3>
-        <p>People: <span id='people'>${s}</span></p>
-        <p>Type: <span id='type'>Actor<span></p>
-      </div>
-      `;
-      $('.movieResults').append(movieEl);
+      if (!movie.rank) {
+        const {l, s} = movie;
+        const img = movie.i.imageUrl;
+        
+        const movieEl = document.createElement('div');
+        movieEl.classList.add('movie');
+        movieEl.innerHTML = `
+        <img src="${img}" alt="${l}">
+        <div class="movie-info">
+          <h6>${l}</h6>
+          <span class="green">N/a</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          <p>People: <span id='people'>${s}</span></p>
+          <p>Type: <span id='type'>Actor<span></p>
+        </div>
+        `;
+        $('.movieResults').append(movieEl);
+      } else {
+        const img = movie.i.imageUrl;
+        const {l, s, rank} = movie;
+        
+        const movieEl = document.createElement('div');
+        movieEl.classList.add('movie');
+        movieEl.innerHTML = `
+        <img src="${img}" alt="${l}">
+        <div class="movie-info">
+          <h6>${l}</h6>
+          <span class="green">${rank}</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          <p>People: <span id='people'>${s}</span></p>
+          <p>Type: <span id='type'>Actor<span></p>
+        </div>
+        `;
+        $('.movieResults').append(movieEl);
+      }
+
     } else {
       const img = movie.i.imageUrl;
       const {l, y, s, q} = movie;
@@ -119,10 +141,10 @@ $(document).ready(function() {
         const luckyTime = res.lucky_time;
         const mood = res.mood;
         const dateRange = res.date_range;
-        $('#zodiacInput').text(zodiacSelect);
+        $('#zodiacInput').text(zodiacSelect.toUpperCase());
         $('#color').text(color);
         $('#compatibility').text(compatibility);
-        $('#description').text(description);
+        $('.quotation').text(description);
         $('#number').text(luckyNum);
         $('#time').text(luckyTime);
         $('#mood').text(mood);
