@@ -38,7 +38,7 @@ let showMovies = (data) => {
       <div class="overview">
         <h3>Overview</h3>
         <p>People: <span id='people'>${s}</span></p>
-        <p>Type: <span id='type'>Actor<span></p>
+        <p>Type: <span id='type'>N/a<span></p>
       </div>
       `;
       $('.movieResults').append(movieEl);
