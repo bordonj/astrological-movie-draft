@@ -3,6 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Zodiac from './js/astrology-service';
+import Movie from './js/movie-service';
 
 
 // import { Project } from 'js/project';
@@ -42,13 +43,16 @@ $(document).ready(function() {
         $('#number').text(luckyNum);
         $('#time').text(luckyTime);
         $('#mood').text(mood);
-        console.log('response from Zodiac.fetchData', res);
-        console.log('color', color);
-        console.log('compatibility', compatibility);
-        console.log('description', description);
-        console.log('luckyNum', luckyNum);
-        console.log('luckyTime', luckyTime);
-        console.log('mood', mood);
+        return Movie.fetchData(color);
+      })
+      .then(res => {
+        if (res instanceof Error) {
+          throw Error(`Movie API error: ${res.message}`);
+        }
+        console.log('movie api res', res);
+      })
+      .catch(err => {
+        console.log('in catch', err);
       });
     $('.form').hide();
     let img = createImg(zodiacSelect.toLowerCase());

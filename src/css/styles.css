@@ -7,8 +7,9 @@ body {
   background-color: rgba(0, 0, 0, 0.729);
   min-width: 600px;
   color: white;
-  margin: 10%;
-  width: 80%;
+  margin:auto;
+  margin-top: 5%;
+  width: 70%;
   box-shadow: 3px 3px #f15cda;
   border-top: 3px solid #60b3f2;
   border-left: 3px solid #60b3f2;
@@ -21,7 +22,7 @@ body {
   width: 80%;
   min-width: 600px;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 5%;
   background-color: rgba(255, 255, 255, 0.818);
   padding: 5%;
   display: none;
@@ -32,6 +33,64 @@ select {
   margin-bottom: 5%;
 }
 
+.movieResults {
+  display: flex;
+  flex-wrap: wrap;
+  /* background-color: greenyellow; */
+  align-items: center;
+  padding: 2%;
+}
+
+.movie {
+  width: 31%;
+  margin: 1%;
+  background-color: rgb(69, 69, 69);
+  box-shadow:0 4px 2px rgb(236, 25, 255);
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.movie-info {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem 1rem;
+  letter-spacing: 0.5px;
+}
+
+.movie-info h3 {
+  margin-top: 0;
+}
+
+.movie-info span {
+  background-color: rgb(236, 25, 255);
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+/* may not use below bc not adding scores */
+.movie-info span.green {
+  color: lightblue;
+}
+
+.overview {
+  background-color: white;
+  color: black;
+  padding: 2rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-height: 100%;
+  transform: translateY(101%);
+  transition: transform 0.3s ease-in;
+}
+
+.movie:hover .overview {
+  transform: translateY(0);
+}
 
 /* text styles */
 .jumbotron h1 {
@@ -87,7 +146,9 @@ span {
 
 
 /* media/images */
-
+.movieResults img {
+  width: 100%;
+}
 
 button, button::after {
   display: block;
