@@ -106,6 +106,10 @@ select {
 .welcome {
   color: #d470f0;
 }
+.results h1 {
+  color:rgb(73, 185, 254);
+  text-shadow: 2px 3px #d470f0;
+}
 .start {
   text-align: center;
   font-size: 50px;

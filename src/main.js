@@ -118,12 +118,15 @@ $(document).ready(function() {
         const luckyNum = res.lucky_number;
         const luckyTime = res.lucky_time;
         const mood = res.mood;
+        const dateRange = res.date_range;
+        $('#zodiacInput').text(zodiacSelect);
         $('#color').text(color);
         $('#compatibility').text(compatibility);
         $('#description').text(description);
         $('#number').text(luckyNum);
         $('#time').text(luckyTime);
         $('#mood').text(mood);
+        $('#date').text(dateRange);
         let movieParams = getColorCompatMood(color, compatibility, mood);
         console.log('movie params', movieParams);
         // return Movie.fetchData(mood);
