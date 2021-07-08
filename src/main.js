@@ -28,9 +28,13 @@ let showMovies = (data) => {
     if (!movie.i) {
       const {l, s, rank} = movie;
       const movieEl = document.createElement('div');
+      const googleQuery = l.split(' ').join('+');
+
       movieEl.classList.add('movie');
       movieEl.innerHTML = `
-      <img src="https://avatars.githubusercontent.com/u/16786985?v=4" alt="${l}">
+      <a href='https://google.com/search?q=${googleQuery}' target='_blank'>
+        <img src="https://avatars.githubusercontent.com/u/16786985?v=4" alt="${l}">
+      </a>
       <div class="movie-info">
         <h6>${l}</h6>
         <span class="green">${rank}</span>
@@ -46,11 +50,14 @@ let showMovies = (data) => {
       if (!movie.rank) {
         const {l, s} = movie;
         const img = movie.i.imageUrl;
-        
+        const googleQuery = l.split(' ').join('+');
         const movieEl = document.createElement('div');
+
         movieEl.classList.add('movie');
         movieEl.innerHTML = `
-        <img src="${img}" alt="${l}">
+        <a href='https://google.com/search?q=${googleQuery}' target='_blank'>
+          <img src="${img}" alt="${l}">
+        </a>
         <div class="movie-info">
           <h6>${l}</h6>
           <span class="green">N/a</span>
@@ -64,12 +71,14 @@ let showMovies = (data) => {
         $('.movieResults').append(movieEl);
       } else {
         const img = movie.i.imageUrl;
-        const {l, s, rank} = movie;
-        
+        const {l, s, rank, id} = movie;
         const movieEl = document.createElement('div');
+
         movieEl.classList.add('movie');
         movieEl.innerHTML = `
-        <img src="${img}" alt="${l}">
+        <a href='https://imdb.com/name/${id}' target='_blank'>
+          <img src="${img}" alt="${l}">
+        </a>
         <div class="movie-info">
           <h6>${l}</h6>
           <span class="green">${rank}</span>
@@ -85,11 +94,14 @@ let showMovies = (data) => {
 
     } else {
       const img = movie.i.imageUrl;
-      const {l, y, s, q} = movie;
+      const {l, y, s, q, id} = movie;
       const movieEl = document.createElement('div');
+
       movieEl.classList.add('movie');
       movieEl.innerHTML = `
-      <img src="${img}" alt="${l}">
+      <a href='https://imdb.com/title/${id}' target='_blank'>
+        <img src="${img}" alt="${l}">
+      </a>
       <div class="movie-info">
         <h6>${l}</h6>
         <span class="green">${y}</span>
