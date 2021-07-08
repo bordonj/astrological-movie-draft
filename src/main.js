@@ -26,36 +26,57 @@ let showMovies = (data) => {
   for (let movie of data.data.d) {
     console.log('movie', movie);
     if (!movie.i) {
-      const {l, s, rank} = movie;
-      const movieEl = document.createElement('div');
-      const googleQuery = l.split(' ').join('+');
-
-      movieEl.classList.add('movie');
-      movieEl.innerHTML = `
-      <a href='https://google.com/search?q=${googleQuery}' target='_blank'>
-        <img src="https://avatars.githubusercontent.com/u/16786985?v=4" alt="${l}">
-      </a>
-      <div class="movie-info">
-        <h6>${l}</h6>
-        <span class="green">${rank}</span>
-      </div>
-      <div class="overview">
-        <h3>Overview</h3>
-        <p>People: <span id='people'>${s}</span></p>
-        <p>Type: <span id='type'>N/a<span></p>
-      </div>
-      `;
-      $('.movieResults').append(movieEl);
+      if (movie.q) {
+        const {l, s, rank, id} = movie;
+        const movieEl = document.createElement('div');
+  
+        movieEl.classList.add('movie');
+        movieEl.innerHTML = `
+        <a href='https://imdb.com/title/${id}' target='_blank'>
+          <img src="https://avatars.githubusercontent.com/u/16786985?v=4" alt="${l}">
+        </a>
+        <div class="movie-info">
+          <h6>${l}</h6>
+          <span class="green">${rank}</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          <p>People: <span id='people'>${s}</span></p>
+          <p>Type: <span id='type'>N/a<span></p>
+        </div>
+        `;
+        $('.movieResults').append(movieEl);
+      } else if (movie.s) {
+        const {l, s, rank, id} = movie;
+        const movieEl = document.createElement('div');
+  
+        movieEl.classList.add('movie');
+        movieEl.innerHTML = `
+        <a href='https://imdb.com/name/${id}' target='_blank'>
+          <img src="https://avatars.githubusercontent.com/u/16786985?v=4" alt="${l}">
+        </a>
+        <div class="movie-info">
+          <h6>${l}</h6>
+          <span class="green">${rank}</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          <p>People: <span id='people'>${s}</span></p>
+          <p>Type: <span id='type'>N/a<span></p>
+        </div>
+        `;
+        $('.movieResults').append(movieEl);
+      }
+      
     } else if (!movie.y) {
       if (!movie.rank) {
-        const {l, s} = movie;
+        const {l, s, id} = movie;
         const img = movie.i.imageUrl;
-        const googleQuery = l.split(' ').join('+');
         const movieEl = document.createElement('div');
 
         movieEl.classList.add('movie');
         movieEl.innerHTML = `
-        <a href='https://google.com/search?q=${googleQuery}' target='_blank'>
+        <a href='https://imdb.com/title/${id}' target='_blank'>
           <img src="${img}" alt="${l}">
         </a>
         <div class="movie-info">
